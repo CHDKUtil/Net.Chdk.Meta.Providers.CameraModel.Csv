@@ -7,7 +7,7 @@ namespace Net.Chdk.Meta.Providers.CameraModel.Csv
     {
         public IDictionary<string, IDictionary<string, string>> GetCameraList(Stream stream)
         {
-            var models = new SortedDictionary<string, IDictionary<string, string>>();
+            var cameraList = new SortedDictionary<string, IDictionary<string, string>>();
             using (var reader = new StreamReader(stream))
             {
                 reader.ReadLine();
@@ -16,23 +16,26 @@ namespace Net.Chdk.Meta.Providers.CameraModel.Csv
                 while ((line = reader.ReadLine()) != null)
                 {
                     var split = line.Split(',');
-                    var revision = split[1];
-                    var revisionKey = GetRevisionKey(revision);
-                    var revisions = GetOrAddRevisions(split, models);
-                    revisions.Add(revisionKey, revision);
+                    AddCamera(cameraList, split[0], split[1]);
                 }
             }
-            return models;
+            return cameraList;
         }
 
-        private static IDictionary<string, string> GetOrAddRevisions(string[] split, IDictionary<string, IDictionary<string, string>> models)
+        private static void AddCamera(IDictionary<string, IDictionary<string, string>> cameraList, string platform, string revision)
         {
-            var model = split[0];
+            var revisionKey = GetRevisionKey(revision);
+            var revisions = GetOrAddRevisions(cameraList, platform);
+            revisions.Add(revisionKey, revision);
+        }
+
+        private static IDictionary<string, string> GetOrAddRevisions(IDictionary<string, IDictionary<string, string>> cameraList, string platform)
+        {
             IDictionary<string, string> revisions;
-            if (!models.TryGetValue(model, out revisions))
+            if (!cameraList.TryGetValue(platform, out revisions))
             {
                 revisions = new SortedDictionary<string, string>();
-                models.Add(model, revisions);
+                cameraList.Add(platform, revisions);
             }
             return revisions;
         }
