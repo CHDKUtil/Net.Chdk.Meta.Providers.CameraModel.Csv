@@ -52,10 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvCameraListProvider.cs" />
+    <Compile Include="CsvCameraProvider.cs" />
+    <Compile Include="CsvCameraTreeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCollectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Net.Chdk.Meta.Model.CameraModel\src\Net.Chdk.Meta.Model.CameraModel\Net.Chdk.Meta.Model.CameraModel.csproj">
+      <Project>{00470B0D-065D-48C2-B861-BBAEE7E5C1A4}</Project>
+      <Name>Net.Chdk.Meta.Model.CameraModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Net.Chdk.Meta.Providers.CameraModel.Core\src\Net.Chdk.Meta.Providers.CameraModel.Core\Net.Chdk.Meta.Providers.CameraModel.Core.csproj">
       <Project>{7B156222-138C-4977-98D9-D14F1BD76016}</Project>
       <Name>Net.Chdk.Meta.Providers.CameraModel.Core</Name>
