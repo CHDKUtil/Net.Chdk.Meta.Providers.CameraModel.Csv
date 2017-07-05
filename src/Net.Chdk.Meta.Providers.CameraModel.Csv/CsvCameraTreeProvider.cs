@@ -1,14 +1,16 @@
 ﻿using Net.Chdk.Meta.Model.CameraModel;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Net.Chdk.Meta.Providers.CameraModel.Csv
 {
     sealed class CsvCameraTreeProvider : CsvCameraProvider<TreeRevisionData>, ICameraTreeProvider
     {
-        public IDictionary<string, IDictionary<string, TreeRevisionData>> GetCameraTree(Stream stream)
+        public IDictionary<string, TreePlatformData> GetCameraTree(Stream stream)
         {
-            return GetCameras(stream);
+            return GetCameras(stream)
+                .ToDictionary(kvp => kvp.Key, kvp => GetPlatform(kvp.Value));
         }
 
         protected override TreeRevisionData GetData(string platform, string revision, string source)
@@ -16,6 +18,14 @@ namespace Net.Chdk.Meta.Providers.CameraModel.Csv
             return new TreeRevisionData
             {
                 Source = GetSource(platform, revision, source)
+            };
+        }
+
+        private static TreePlatformData GetPlatform(IDictionary<string, TreeRevisionData> revisions)
+        {
+            return new TreePlatformData
+            {
+                Revisions = revisions
             };
         }
 
