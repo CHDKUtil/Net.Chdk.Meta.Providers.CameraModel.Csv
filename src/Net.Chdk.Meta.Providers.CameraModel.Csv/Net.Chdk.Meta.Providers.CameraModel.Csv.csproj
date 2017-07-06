@@ -32,17 +32,11 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.1.1\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,32 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CsvCameraListProvider.cs" />
     <Compile Include="CsvCameraProvider.cs" />
-    <Compile Include="CsvCameraTreeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceCollectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Net.Chdk.Meta.Model.Base\src\Net.Chdk.Meta.Model.Base\Net.Chdk.Meta.Model.Base.csproj">
       <Project>{a4c2d557-e6c8-4b78-a5e8-3cde0d175918}</Project>
       <Name>Net.Chdk.Meta.Model.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Net.Chdk.Meta.Model.CameraList\src\Net.Chdk.Meta.Model.CameraList\Net.Chdk.Meta.Model.CameraList.csproj">
-      <Project>{3a3fbc22-e7c4-400e-ac54-63cd671044a6}</Project>
-      <Name>Net.Chdk.Meta.Model.CameraList</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Net.Chdk.Meta.Model.CameraTree\src\Net.Chdk.Meta.Model.CameraTree\Net.Chdk.Meta.Model.CameraTree.csproj">
-      <Project>{41BD81EC-709E-4248-A3E1-7B9BA8BD6494}</Project>
-      <Name>Net.Chdk.Meta.Model.CameraTree</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Net.Chdk.Meta.Providers.CameraModel.Core\src\Net.Chdk.Meta.Providers.CameraModel.Core\Net.Chdk.Meta.Providers.CameraModel.Core.csproj">
-      <Project>{7B156222-138C-4977-98D9-D14F1BD76016}</Project>
-      <Name>Net.Chdk.Meta.Providers.CameraModel.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\..\..\Net.Chdk.Core\src\Net.Chdk.Shared\Net.Chdk.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

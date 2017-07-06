@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Net.Chdk.Meta.Providers.CameraModel.Csv
 {
-    abstract class CsvCameraProvider<TPlatform, TRevision, TSource>
+    public abstract class CsvCameraProvider<TPlatform, TRevision, TSource>
         where TPlatform : PlatformData<TPlatform, TRevision, TSource>, new()
         where TRevision : RevisionData<TRevision, TSource>, new()
         where TSource : SourceData<TSource>, new()
