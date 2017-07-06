@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Net.Chdk.Meta.Providers.CameraModel.Csv
+namespace Net.Chdk.Meta.Providers.Csv
 {
     public abstract class CsvCameraProvider<TPlatform, TRevision, TSource>
         where TPlatform : PlatformData<TPlatform, TRevision, TSource>, new()

@@ -7,8 +7,8 @@
     <ProjectGuid>{5C7EF1D1-44C2-42D4-96D8-2B9468426695}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Net.Chdk.Meta.Providers.CameraModel.Csv</RootNamespace>
-    <AssemblyName>Net.Chdk.Meta.Providers.CameraModel.Csv</AssemblyName>
+    <RootNamespace>Net.Chdk.Meta.Providers.Csv</RootNamespace>
+    <AssemblyName>Net.Chdk.Meta.Providers.Csv</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
