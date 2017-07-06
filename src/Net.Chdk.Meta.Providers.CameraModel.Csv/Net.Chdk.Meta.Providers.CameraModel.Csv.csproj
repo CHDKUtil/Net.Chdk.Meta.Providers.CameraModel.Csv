@@ -58,9 +58,17 @@
     <Compile Include="ServiceCollectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Net.Chdk.Meta.Model.CameraModel\src\Net.Chdk.Meta.Model.CameraModel\Net.Chdk.Meta.Model.CameraModel.csproj">
-      <Project>{00470B0D-065D-48C2-B861-BBAEE7E5C1A4}</Project>
-      <Name>Net.Chdk.Meta.Model.CameraModel</Name>
+    <ProjectReference Include="..\..\..\Net.Chdk.Meta.Model.Base\src\Net.Chdk.Meta.Model.Base\Net.Chdk.Meta.Model.Base.csproj">
+      <Project>{a4c2d557-e6c8-4b78-a5e8-3cde0d175918}</Project>
+      <Name>Net.Chdk.Meta.Model.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Net.Chdk.Meta.Model.CameraList\src\Net.Chdk.Meta.Model.CameraList\Net.Chdk.Meta.Model.CameraList.csproj">
+      <Project>{3a3fbc22-e7c4-400e-ac54-63cd671044a6}</Project>
+      <Name>Net.Chdk.Meta.Model.CameraList</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Net.Chdk.Meta.Model.CameraTree\src\Net.Chdk.Meta.Model.CameraTree\Net.Chdk.Meta.Model.CameraTree.csproj">
+      <Project>{41BD81EC-709E-4248-A3E1-7B9BA8BD6494}</Project>
+      <Name>Net.Chdk.Meta.Model.CameraTree</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Net.Chdk.Meta.Providers.CameraModel.Core\src\Net.Chdk.Meta.Providers.CameraModel.Core\Net.Chdk.Meta.Providers.CameraModel.Core.csproj">
       <Project>{7B156222-138C-4977-98D9-D14F1BD76016}</Project>
