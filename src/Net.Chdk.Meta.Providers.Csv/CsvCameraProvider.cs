@@ -28,10 +28,9 @@ namespace Net.Chdk.Meta.Providers.Csv
 
         private static void AddCamera(IDictionary<string, TPlatform> cameras, string platform, string revision, string source)
         {
-            var revisionKey = GetRevisionKey(revision);
             var platformData = GetOrAddPlatform(cameras, platform);
             var revisionData = GetRevisionData(platform, revision, source);
-            platformData.Revisions.Add(revisionKey, revisionData);
+            platformData.Revisions.Add(revision, revisionData);
         }
 
         private static TPlatform GetOrAddPlatform(IDictionary<string, TPlatform> cameras, string platform)
@@ -75,23 +74,6 @@ namespace Net.Chdk.Meta.Providers.Csv
             if (!string.IsNullOrEmpty(source))
                 return source;
             return revision;
-        }
-
-        private static string GetRevisionKey(string revisionStr)
-        {
-            var revision = GetFirmwareRevision(revisionStr);
-            return $"0x{revision:x}";
-        }
-
-        private static uint GetFirmwareRevision(string revision)
-        {
-            if (revision == null)
-                return 0;
-            return
-                (uint)((revision[0] - 0x30) << 24) +
-                (uint)((revision[1] - 0x30) << 20) +
-                (uint)((revision[2] - 0x30) << 16) +
-                (uint)((revision[3] - 0x60) << 8);
         }
     }
 }
