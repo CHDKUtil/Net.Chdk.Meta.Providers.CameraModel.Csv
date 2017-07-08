@@ -23,31 +23,31 @@ namespace Net.Chdk.Meta.Providers.Csv
                     var split = line.Split(',');
                     if (split.Length != 5)
                         throw new InvalidOperationException("Invalid file format");
-                    AddCamera(cameras, split[0], split[1], split[3]);
+                    AddCamera(cameras, split);
                 }
             }
             return cameras;
         }
 
-        private static void AddCamera(IDictionary<string, TPlatform> cameras, string platform, string revision, string source)
+        private void AddCamera(IDictionary<string, TPlatform> cameras, string[] split)
         {
-            var platformData = GetOrAddPlatform(cameras, platform);
-            var revisionData = GetRevisionData(platform, revision, source);
-            platformData.Revisions.Add(revision, revisionData);
+            var platformData = GetOrAddPlatform(cameras, split[0]);
+            var revisionData = GetRevisionData(split);
+            platformData.Revisions.Add(split[1], revisionData);
         }
 
-        private static TPlatform GetOrAddPlatform(IDictionary<string, TPlatform> cameras, string platform)
+        private TPlatform GetOrAddPlatform(IDictionary<string, TPlatform> cameras, string platform)
         {
             TPlatform platformData;
             if (!cameras.TryGetValue(platform, out platformData))
             {
-                platformData = GetPlatformData();
+                platformData = GetPlatformData(platform);
                 cameras.Add(platform, platformData);
             }
             return platformData;
         }
 
-        private static TPlatform GetPlatformData()
+        protected virtual TPlatform GetPlatformData(string platform)
         {
             return new TPlatform
             {
@@ -55,25 +55,27 @@ namespace Net.Chdk.Meta.Providers.Csv
             };
         }
 
-        private static TRevision GetRevisionData(string platform, string revision, string source)
+        protected virtual TRevision GetRevisionData(string[] split)
         {
             return new TRevision
             {
-                Source = GetSourceData(platform, revision, source)
+                Source = GetSourceData(split)
             };
         }
 
-        private static TSource GetSourceData(string platform, string revision, string source)
+        private static TSource GetSourceData(string[] split)
         {
             return new TSource
             {
-                Platform = platform,
-                Revision = GetRevision(revision, source)
+                Platform = split[0],
+                Revision = GetRevision(split)
             };
         }
 
-        private static string GetRevision(string revision, string source)
+        private static string GetRevision(string[] split)
         {
+            var revision = split[1];
+            var source = split[3];
             if (!string.IsNullOrEmpty(source))
                 return source;
             return revision;
