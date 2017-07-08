@@ -1,4 +1,5 @@
 ﻿using Net.Chdk.Meta.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -20,6 +21,8 @@ namespace Net.Chdk.Meta.Providers.Csv
                 while ((line = reader.ReadLine()) != null)
                 {
                     var split = line.Split(',');
+                    if (split.Length != 5)
+                        throw new InvalidOperationException("Invalid file format");
                     AddCamera(cameras, split[0], split[1], split[3]);
                 }
             }
