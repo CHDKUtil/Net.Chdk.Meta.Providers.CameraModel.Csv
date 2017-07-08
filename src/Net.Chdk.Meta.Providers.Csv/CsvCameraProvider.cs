@@ -10,10 +10,10 @@ namespace Net.Chdk.Meta.Providers.Csv
         where TRevision : RevisionData<TRevision, TSource>, new()
         where TSource : SourceData<TSource>, new()
     {
-        protected IDictionary<string, TPlatform> GetCameras(Stream stream)
+        protected IDictionary<string, TPlatform> GetCameras(string path)
         {
             var cameras = new SortedDictionary<string, TPlatform>();
-            using (var reader = new StreamReader(stream))
+            using (var reader = File.OpenText(path))
             {
                 reader.ReadLine();
 
