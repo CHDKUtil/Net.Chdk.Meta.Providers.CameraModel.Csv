@@ -63,11 +63,10 @@ namespace Net.Chdk.Meta.Providers.Csv
             };
         }
 
-        private static TSource GetSourceData(string[] split)
+        protected virtual TSource GetSourceData(string[] split)
         {
             return new TSource
             {
-                Platform = split[0],
                 Revision = GetRevision(split)
             };
         }
