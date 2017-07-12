@@ -10,6 +10,8 @@ namespace Net.Chdk.Meta.Providers.Csv
         where TRevision : RevisionData<TRevision, TSource>, new()
         where TSource : SourceData<TSource>, new()
     {
+        public string Extension => ".csv";
+
         protected IDictionary<string, TPlatform> GetCameras(string path)
         {
             var cameras = new SortedDictionary<string, TPlatform>();
